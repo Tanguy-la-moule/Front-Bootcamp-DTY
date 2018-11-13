@@ -1,0 +1,18 @@
+.album_cover {
+  width: 200px;
+  height: auto;
+}
+
+.small_rounded_image {
+  border-radius: 10px
+}
+
+.margin-top {
+  margin-top: 5px;
+}
+
+.rounded {
+  border-radius: 40px;
+  background-color: #f0f3f4;
+  margin-top: 20px;
+}

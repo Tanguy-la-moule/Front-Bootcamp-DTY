@@ -1,0 +1,67 @@
+<section class="section">
+  <div class="container">
+    <h1 class="title is-1">Look for a Soundshare user</h1>
+    <div class="columns">
+      <div class="column is-three-quarters">
+        <input class="input is-primary" type="text" placeholder="Friend's email or username" [(ngModel)] = "research">
+      </div>
+      <div class="column">
+        <button class="button is-fullwidth is-primary" [disabled]="!research" (click)="findFriend(research)">Research</button>
+      </div>
+    </div>
+    <div *ngIf="researchedUsers && researchedUsers.length != 0">
+      <h5 class="title is-5">Result of your research</h5>
+      <article class="message is-primary margin-top">
+        <div class="message-body" *ngFor="let user of researchedUsers">
+          <div class="columns">
+            <div class="column is-10">
+              <p class="title is-4">{{user.username}}</p>
+              <p class="subtitle is-5">{{user.email}}</p>
+            </div>
+            <div class="column">
+              <button class="button is-fullwidth is-primary is-rounded margin-top" (click)="buttonAction(user.status, user._id, researchedUsers.indexOf(user))">{{user.status}}</button>
+            </div>
+          </div>
+        </div>
+      </article>
+    </div>
+    <div *ngIf="researchedUsers && researchedUsers.length == 0">
+      <h5 class="title is-5">No such user ...</h5>
+    </div><br>
+    <div *ngIf="requestedUsers && requestedUsers.length > 0">
+      <h1 class="title is-1">Your friend requests</h1>
+      <article class="message is-primary margin-top">
+        <div class="message-body" *ngFor="let user of requestedUsers">
+          <div class="columns">
+            <div class="column is-8">
+              <p class="title is-4">{{user.username}}</p>
+              <p class="subtitle is-5">{{user.email}}</p>
+            </div>
+            <div class="column">
+              <button class="button is-fullwidth is-primary is-rounded margin-top" (click)="acceptFriendRequest(user._id, requestedUsers.indexOf(user))">Accept</button>
+            </div>
+            <div class="column">
+              <button class="button is-fullwidth is-primary is-rounded margin-top" (click)="declineFriendRequest(user._id, requestedUsers.indexOf(user))">Decline</button>
+            </div>
+          </div>
+        </div>
+      </article><br>
+    </div>
+    <div *ngIf="friendUsers && friendUsers.length > 0">
+      <h1 class="title is-1">Your friends</h1>
+      <article class="message is-primary small-margin-top" *ngFor="let user of friendUsers">
+        <div class="message-body">
+          <div class="columns">
+            <div class="column is-10">
+              <p class="title is-4">{{user.username}}</p>
+              <p class="subtitle is-5">{{user.email}}</p>
+            </div>
+            <div class="column">
+              <button class="button is-fullwidth is-primary is-rounded margin-top" (click)="deleteFriendship(user._id, friendUsers.indexOf(user))">Remove friend</button>
+            </div>
+          </div>
+        </div>
+      </article>
+    </div>
+  </div>
+</section>

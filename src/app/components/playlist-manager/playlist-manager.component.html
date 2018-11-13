@@ -1,0 +1,48 @@
+<section class="section">
+  <div class="container">
+    <h1 class="title is-1">Create a new playlist</h1>
+    <div class="columns">
+      <div class="column is-three-quarters">
+        <input class="input is-primary" type="text" placeholder="New playlist name" [(ngModel)] = "playlist_name">
+      </div>
+      <div class="column">
+        <button class="button is-fullwidth is-primary" [disabled]="!playlist_name" (click)="createPlaylist(playlist_name)">Create</button>
+      </div>
+    </div>
+    <br>
+    <div *ngIf="playlists && playlists.length > 0">
+      <h1 class="title is-1">Your existing playlists</h1>
+      <div *ngFor="let playlist of playlists">
+        <div class="card">
+          <header class="card-header">
+            <div class="card-header-title">
+              <h3 class="title is-3">{{playlist.name}}</h3>
+            </div>
+          </header>
+          <div class="card-content">
+            <div class="content">
+              <app-choose-song
+                [playlist_songs] = "playlist.songs"
+                [playlistID] = "playlist._id"
+                (modified)="getPlaylist()"
+                (delete)="deletePlaylist(playlist._id)"
+                (listen)="listenToPlaylist(playlist.songs)"
+              ></app-choose-song>
+            </div>
+          </div>
+        </div><br>
+      </div>
+    </div>
+    <app-mediaplayer *ngIf="player_playlist" [playlist]="player_playlist"></app-mediaplayer>
+  </div>
+</section>
+
+
+<div class="columns">
+  <div class="column">
+
+  </div>
+  <div class="column">
+
+  </div>
+<div>

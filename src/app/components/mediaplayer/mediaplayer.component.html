@@ -1,0 +1,36 @@
+<section class="section">
+  <div class="container">
+    <div class="columns">
+      <div class="column is-1">
+        <div class="card">
+          <div class="card-image">
+            <figure class="image is-1by1">
+              <img *ngIf="song" class="image is-64x64 small_rounded_image" [src]="song.cover_url" alt="Placeholder image">
+            </figure>
+          </div>
+        </div>
+      </div>
+      <div class="column is-6 margin-top">
+        <h4 *ngIf="song" class="title is-4">{{song.title}}</h4>
+        <h5  *ngIf="song" class="title is-5">{{song.artist}}</h5>
+      </div>
+      <div class="column is-1">
+        <button class="button is-large rounded" (click)="previousSong()">
+          <span class="icon">
+            <i class="fas fa-step-backward"></i>
+          </span>
+        </button>
+      </div>
+      <div class="column is-3">
+        <audio id="audio" autoplay controls></audio>
+      </div>
+      <div class="column is-1">
+        <button class="button is-large rounded" (click)="nextSong()">
+          <span class="icon">
+            <i class="fas fa-step-forward"></i>
+          </span>
+        </button>
+      </div>
+    </div>
+  </div>
+</section>

@@ -1,0 +1,27 @@
+.small_image {
+  max-width: 40%;
+  display:block;
+  margin-left:auto;
+  margin-right:auto;
+}
+
+.white_separation {
+  border-color: white;
+}
+
+.album_cover {
+  width: 200px;
+  height: auto;
+}
+
+.margin-left {
+  margin-left: 30px;
+}
+
+.margin-top {
+  margin-top: 10px;
+}
+
+.small_rounded_image {
+  border-radius: 10px
+}
